@@ -19817,6 +19817,36 @@ function previousPet(){
 document.getElementById('left').addEventListener('click', previousPet);
 document.getElementById('right').addEventListener('click', nextPet);
 
+function UpdateVisiblePet(){
+    console.log('inner width is', window.screen.width);
+    if(window.screen.width <= 768) {
+        petVisible = 1;
+        console.log('loaded up to two pets')
+    }
+    else if(window.screen.width <= 910) {
+        petVisible = 2;
+        console.log('loaded up to two pets')
+    }else {
+        petVisible = 3;
+        console.log('loaded up to three pets')
+    }
+    petCards(petsTotal);
+}
+function debounce(func, wait){
+    let timeout;
+    return function (...args){
+        clearTimeout(timeout);
+        timeout = setTimeout(()=> func.apply(this, args), wait);
+    }
+}
+window.addEventListener('resize', debounce(UpdateVisiblePet, 200));
+if(window){
+    console.log('resize works');
+}else {
+    console.log('resize error');
+}
+window.addEventListener('load', UpdateVisiblePet);
+
 
 const list = [];
 const someList = ['one','two','three'];
