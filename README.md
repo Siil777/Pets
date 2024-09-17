@@ -1,2 +1,2 @@
 Deploy:
- https://siil777.github.io/Pets/build/index.html
+ https://siil777.github.io/Pets/index.html
